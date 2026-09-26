@@ -19,12 +19,12 @@ export const Route = createFileRoute("/signup")({
 function Signup() {
   const navigate = useNavigate();
   const [f, setF] = useState({ loginId: "", email: "", password: "", confirm: "" });
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Partial<Record<"loginId" | "email" | "password" | "confirm", string>>>({});
   const set = (k: keyof typeof f) => (e: React.ChangeEvent<HTMLInputElement>) => setF({ ...f, [k]: e.target.value });
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    const errs: Record<string, string> = {};
+    const errs: typeof errors = {};
     if (f.loginId.length < 6 || f.loginId.length > 12) errs.loginId = "Login ID must be 6–12 characters";
     if (!/^\S+@\S+\.\S+$/.test(f.email)) errs.email = "Enter a valid email";
     if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{9,}$/.test(f.password))
