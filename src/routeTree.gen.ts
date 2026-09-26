@@ -10,33 +10,167 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DeliveriesRouteImport } from './routes/deliveries'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as MoveHistoryRouteImport } from './routes/move-history'
+import { Route as ProductsRouteImport } from './routes/products'
+import { Route as ReceiptsRouteImport } from './routes/receipts'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as StockRouteImport } from './routes/stock'
+import { Route as OperationsIdRouteImport } from './routes/operations.$id'
+import { Route as SettingsLocationsRouteImport } from './routes/settings.locations'
+import { Route as SettingsWarehousesRouteImport } from './routes/settings.warehouses'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DeliveriesRoute = DeliveriesRouteImport.update({
+  id: '/deliveries',
+  path: '/deliveries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoveHistoryRoute = MoveHistoryRouteImport.update({
+  id: '/move-history',
+  path: '/move-history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReceiptsRoute = ReceiptsRouteImport.update({
+  id: '/receipts',
+  path: '/receipts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StockRoute = StockRouteImport.update({
+  id: '/stock',
+  path: '/stock',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OperationsIdRoute = OperationsIdRouteImport.update({
+  id: '/operations/$id',
+  path: '/operations/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsLocationsRoute = SettingsLocationsRouteImport.update({
+  id: '/settings/locations',
+  path: '/settings/locations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsWarehousesRoute = SettingsWarehousesRouteImport.update({
+  id: '/settings/warehouses',
+  path: '/settings/warehouses',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/deliveries': typeof DeliveriesRoute
+  '/login': typeof LoginRoute
+  '/move-history': typeof MoveHistoryRoute
+  '/products': typeof ProductsRoute
+  '/receipts': typeof ReceiptsRoute
+  '/signup': typeof SignupRoute
+  '/stock': typeof StockRoute
+  '/operations/$id': typeof OperationsIdRoute
+  '/settings/locations': typeof SettingsLocationsRoute
+  '/settings/warehouses': typeof SettingsWarehousesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/deliveries': typeof DeliveriesRoute
+  '/login': typeof LoginRoute
+  '/move-history': typeof MoveHistoryRoute
+  '/products': typeof ProductsRoute
+  '/receipts': typeof ReceiptsRoute
+  '/signup': typeof SignupRoute
+  '/stock': typeof StockRoute
+  '/operations/$id': typeof OperationsIdRoute
+  '/settings/locations': typeof SettingsLocationsRoute
+  '/settings/warehouses': typeof SettingsWarehousesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/deliveries': typeof DeliveriesRoute
+  '/login': typeof LoginRoute
+  '/move-history': typeof MoveHistoryRoute
+  '/products': typeof ProductsRoute
+  '/receipts': typeof ReceiptsRoute
+  '/signup': typeof SignupRoute
+  '/stock': typeof StockRoute
+  '/operations/$id': typeof OperationsIdRoute
+  '/settings/locations': typeof SettingsLocationsRoute
+  '/settings/warehouses': typeof SettingsWarehousesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/deliveries'
+    | '/login'
+    | '/move-history'
+    | '/products'
+    | '/receipts'
+    | '/signup'
+    | '/stock'
+    | '/operations/$id'
+    | '/settings/locations'
+    | '/settings/warehouses'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/deliveries'
+    | '/login'
+    | '/move-history'
+    | '/products'
+    | '/receipts'
+    | '/signup'
+    | '/stock'
+    | '/operations/$id'
+    | '/settings/locations'
+    | '/settings/warehouses'
+  id:
+    | '__root__'
+    | '/'
+    | '/deliveries'
+    | '/login'
+    | '/move-history'
+    | '/products'
+    | '/receipts'
+    | '/signup'
+    | '/stock'
+    | '/operations/$id'
+    | '/settings/locations'
+    | '/settings/warehouses'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DeliveriesRoute: typeof DeliveriesRoute
+  LoginRoute: typeof LoginRoute
+  MoveHistoryRoute: typeof MoveHistoryRoute
+  ProductsRoute: typeof ProductsRoute
+  ReceiptsRoute: typeof ReceiptsRoute
+  SignupRoute: typeof SignupRoute
+  StockRoute: typeof StockRoute
+  OperationsIdRoute: typeof OperationsIdRoute
+  SettingsLocationsRoute: typeof SettingsLocationsRoute
+  SettingsWarehousesRoute: typeof SettingsWarehousesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +182,91 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/deliveries': {
+      id: '/deliveries'
+      path: '/deliveries'
+      fullPath: '/deliveries'
+      preLoaderRoute: typeof DeliveriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/move-history': {
+      id: '/move-history'
+      path: '/move-history'
+      fullPath: '/move-history'
+      preLoaderRoute: typeof MoveHistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/receipts': {
+      id: '/receipts'
+      path: '/receipts'
+      fullPath: '/receipts'
+      preLoaderRoute: typeof ReceiptsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stock': {
+      id: '/stock'
+      path: '/stock'
+      fullPath: '/stock'
+      preLoaderRoute: typeof StockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/operations/$id': {
+      id: '/operations/$id'
+      path: '/operations/$id'
+      fullPath: '/operations/$id'
+      preLoaderRoute: typeof OperationsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings/locations': {
+      id: '/settings/locations'
+      path: '/settings/locations'
+      fullPath: '/settings/locations'
+      preLoaderRoute: typeof SettingsLocationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings/warehouses': {
+      id: '/settings/warehouses'
+      path: '/settings/warehouses'
+      fullPath: '/settings/warehouses'
+      preLoaderRoute: typeof SettingsWarehousesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DeliveriesRoute: DeliveriesRoute,
+  LoginRoute: LoginRoute,
+  MoveHistoryRoute: MoveHistoryRoute,
+  ProductsRoute: ProductsRoute,
+  ReceiptsRoute: ReceiptsRoute,
+  SignupRoute: SignupRoute,
+  StockRoute: StockRoute,
+  OperationsIdRoute: OperationsIdRoute,
+  SettingsLocationsRoute: SettingsLocationsRoute,
+  SettingsWarehousesRoute: SettingsWarehousesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
