@@ -65,10 +65,14 @@ function OperationDetail() {
   const locOptions = locations.map((l) => `${warehouses.find((w) => w.id === l.warehouseId)?.code ?? "WH"}/${l.code}`);
 
   const onValidate = () => {
-    if (op.lines.length === 0) return toast.error("Add at least one product first.");
+    if (op.lines.length === 0) {
+      toast.error("Add at least one product first.");
+      return;
+    }
     if (op.status === "draft" || op.status === "waiting") {
       actions.markTodo(op.id);
-      return toast.success(isIn ? "Marked as ready" : "Availability checked");
+      toast.success(isIn ? "Marked as ready" : "Availability checked");
+      return;
     }
     actions.validate(op.id);
     toast.success(`${op.ref} validated — stock updated`);
@@ -234,7 +238,7 @@ function OperationDetail() {
           {editable && products.length > 0 && (
             <button
               className="mt-2 px-3 py-1 text-sm font-medium text-link hover:underline"
-              onClick={() => update({ lines: [...op.lines, { productId: products[0].id, qty: 1 }] })}
+              onClick={() => update({ lines: [...op.lines, { productId: products[0]!.id, qty: 1 }] })}
             >
               Add a product
             </button>

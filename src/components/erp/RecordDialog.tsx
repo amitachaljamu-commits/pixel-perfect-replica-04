@@ -2,15 +2,15 @@ import { useState, type ReactNode } from "react";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
-export type FieldDef = {
-  name: string;
+export type FieldDef<K extends string = string> = {
+  name: K;
   label: string;
   type?: "text" | "number" | "select";
   options?: { value: string; label: string }[];
   required?: boolean;
 };
 
-export function RecordDialog({
+export function RecordDialog<K extends string>({
   open,
   onOpenChange,
   title,
@@ -21,9 +21,9 @@ export function RecordDialog({
   open: boolean;
   onOpenChange: (o: boolean) => void;
   title: string;
-  fields: FieldDef[];
-  initial: Record<string, string>;
-  onSave: (v: Record<string, string>) => void;
+  fields: FieldDef<K>[];
+  initial: Record<K, string>;
+  onSave: (v: Record<K, string>) => void;
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -37,22 +37,22 @@ export function RecordDialog({
   );
 }
 
-function Form({
+function Form<K extends string>({
   fields,
   initial,
   onSave,
   onCancel,
 }: {
-  fields: FieldDef[];
-  initial: Record<string, string>;
-  onSave: (v: Record<string, string>) => void;
+  fields: FieldDef<K>[];
+  initial: Record<K, string>;
+  onSave: (v: Record<K, string>) => void;
   onCancel: () => void;
 }) {
   const [v, setV] = useState(initial);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Partial<Record<K, string>>>({});
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    const errs: Record<string, string> = {};
+    const errs: Partial<Record<K, string>> = {};
     fields.forEach((f) => f.required && !v[f.name]?.trim() && (errs[f.name] = `${f.label} is required`));
     setErrors(errs);
     if (Object.keys(errs).length === 0) onSave(v);

@@ -74,7 +74,7 @@ function StockPage() {
                       onKeyDown={(e) => e.key === "Enter" && (e.target as HTMLInputElement).blur()}
                     />
                   </td>
-                  <td className={cn("text-right tabular-nums", free[p.id] <= 0 && "font-medium text-destructive")}>
+                  <td className={cn("text-right tabular-nums", (free[p.id] ?? 0) <= 0 && "font-medium text-destructive")}>
                     {free[p.id]}
                   </td>
                 </tr>

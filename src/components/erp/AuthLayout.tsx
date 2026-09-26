@@ -25,7 +25,7 @@ export function AuthField({
   label,
   error,
   ...props
-}: { label: string; error?: string } & React.InputHTMLAttributes<HTMLInputElement>) {
+}: { label: string; error?: string | undefined } & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <div className="grid gap-1">
       <label htmlFor={props.id} className="erp-label">
